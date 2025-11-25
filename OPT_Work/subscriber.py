@@ -10,8 +10,8 @@ from datetime import datetime, timedelta
 project_id = "dataengineeringproject-456307"
 subscription_id = "MyTopic1-sub"
 DBname = "trimet_data"
-DBuser = "xxxxxxxxxx"
-DBpwd = "xxxxxxxxx"
+DBuser = "srilakshmi"
+DBpwd = "srilu2001"
 
 # === Pub/Sub Setup ===
 subscriber = pubsub_v1.SubscriberClient()
@@ -25,6 +25,10 @@ def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     try:
         json_message = json.loads(message.data.decode('utf-8'))
         json_list.append(json_message)
+        # Debug print every 50,000 messages
+        if len(json_list) % 50000 == 0:
+           print(f"Received {len(json_list)} messages...")
+
     except Exception as e:
         print(f"[callback] error decoding message: {e}")
     finally:
