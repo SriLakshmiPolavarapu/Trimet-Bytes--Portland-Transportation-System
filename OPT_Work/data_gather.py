@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 
 def gather_bus_data():
     os.makedirs(output_folder, exist_ok=True)
-    vehicle_ids_path = os.path.join(script_dir, "vehicle_ids.csv")
+    vehicle_ids_path = os.path.join(script_dir, "vehicles_300.csv")
 
     try:
         df = pd.read_csv(vehicle_ids_path, header=None)
